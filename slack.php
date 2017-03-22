@@ -102,7 +102,7 @@ task('deploy:slack', function () {
 
     $messagePlaceHolders = [
         '{{release_path}}' => get('release_path'),
-        '{{host}}'         => get('server.host'),
+        '{{host}}'         => $deployHost,
         '{{stage}}'        => $stage,
         '{{user}}'         => $user,
         '{{branch}}'       => $branch,
