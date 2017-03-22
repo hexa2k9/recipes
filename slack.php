@@ -30,6 +30,7 @@ task('deploy:slack', function () {
     $revision = trim(runLocally('git log -n 1 --format="%h"'));
     $stage = get('stages')[0];
     $branch = get('branch');
+    $deployHost = !is_null(get('server.host')) ? get('server.host') : get('server.name');
     if (input()->hasOption('branch')) {
         $inputBranch = input()->getOption('branch');
         if (!empty($inputBranch)) {
@@ -72,7 +73,7 @@ task('deploy:slack', function () {
                     ],
                     [
                         'title' => 'Host',
-                        'value' => get('server.name'),
+                        'value' => $deployHost,
                         'short' => true,
                     ],
                 ],
